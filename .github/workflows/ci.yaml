@@ -13,9 +13,12 @@ jobs:
       # my application was written in Python
       - name: Set up Python 3
         uses: actions/setup-python@v3
-      # installation required packages for test
+      # installation required packages
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      # installation required packages for tests
       - name: Install test dependencies
-        run: pip install -r tests_requirements.txt
-      #tests!!!
+        run: pip install -r test_requirements.txt
+      # tests!!!
       - name: Tests
-        run: pytest
+        run: PYTHONPATH=. py.test
